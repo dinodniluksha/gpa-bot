@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login Form</title>
+        <!-- note the special href for files in the Flask "static" folder -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    </head>
+    <body>
+        <h2>Login Page</h2><br>
+        <div class="login">
+            <form id="login" method="post" action="/login" enctype="multipart/form-data">
+                <label><b>User Name
+                </b>
+                </label>
+                <input type="text" name="Uname" id="Uname" placeholder="Username">
+                <br><br>
+                <label><b>Password
+                </b>
+                </label>
+                <input type="Password" name="Pass" id="Pass" placeholder="Password">
+                <br><br>
+                <input type="submit" name="log" id="log" value="Login">
+            </form>
+            {% if initial_login == "mismatch" %}
+                <div>
+                    <br>
+                    <label class="error"><b>Logging Failed, Please Try Again</b></label>
+                </div>
+            {% endif %}
+            {% if initial_login == "incomplete" %}
+                <div>
+                    <br>
+                    <label class="error"><b>Please Enter User Name & Password,<br>Then Try Again</b></label>
+                </div>
+            {% endif %}
+        </div>
+    </body>
+</html>
